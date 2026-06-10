@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   FaChalkboardTeacher,
   FaBookOpen,
@@ -49,6 +49,24 @@ function Counter({ end, label }) {
   const counterRef = useRef(null);
   const hasAnimated = useRef(false);
 
+  const startCounter = useCallback(() => {
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    let start = 0;
+    const duration = 2000;
+    const increment = end / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+      setCount(Math.floor(start));
+    }, 16);
+  }, [end]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -67,25 +85,7 @@ function Counter({ end, label }) {
     }
 
     return () => observer.disconnect();
-  }, []);
-
-  const startCounter = () => {
-    if (hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    let start = 0;
-    const duration = 2000;
-    const increment = end / (duration / 16);
-
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
-      }
-      setCount(Math.floor(start));
-    }, 16);
-  };
+  }, [startCounter]);
 
   return (
     <div className="col-md-3 text-center counter-box" ref={counterRef}>
@@ -105,7 +105,6 @@ function WhyChoose() {
 
   return (
     <section className="why-section" id="whychoose">
-      {/* Background Squares */}
       <div className="squares">
         {[...Array(100)].map((_, i) => {
           const randomX = Math.random() * 100;
@@ -154,7 +153,6 @@ function WhyChoose() {
           ))}
         </div>
 
-        {/* Counters */}
         <div className="row mt-5" data-aos="fade-up">
           <Counter end={500} label="Students Trained" />
           <Counter end={10} label="Courses Offered" />
