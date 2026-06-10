@@ -77,19 +77,31 @@ const Footer = () => {
         </div>
 
         {/* Floating Social Blob */}
-        <div className="footer-social-wrapper">
-          <div className="footer-social-blob">
-            <a href="#" className="social-icon"><FaWhatsapp /></a>
-            <a href="#" className="social-icon"><FaLinkedinIn /></a>
-            <a href="#" className="social-icon"><FaInstagram /></a>
-          </div>
-        </div>
+       <div className="footer-social-wrapper">
+  <div className="footer-social-blob">
+    <button type="button" className="social-icon">
+      <FaWhatsapp />
+    </button>
+
+    <button type="button" className="social-icon">
+      <FaLinkedinIn />
+    </button>
+
+    <button type="button" className="social-icon">
+      <FaInstagram />
+    </button>
+  </div>
+</div>
 
         {/* Bottom */}
         <div className="footer-bottom">
   © {new Date().getFullYear()}{" "}
-  <a href="https://www.enterkeysolutions.com" target="_blank" className="footer-company">
-    Enterkey Solution
+<a
+  href="https://www.enterkeysolutions.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="footer-company"
+>    Enterkey Solution
   </a>{" "}
   | All Rights Reserved.
 </div>
