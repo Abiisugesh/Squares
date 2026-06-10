@@ -1,0 +1,114 @@
+/* ===============================
+   SECTION
+================================= */
+.testimonial-section {
+  background: linear-gradient(135deg, var(--primary-light), #ffffff);
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+/* Heading */
+.testimonial-heading {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.testimonial-sub {
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+/* Container */
+.testimonial-container {
+  height: 40rem;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.testimonial-container.reverse {
+  mask-image: linear-gradient(to top, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to top, transparent, black 20%, black 80%, transparent);
+}
+
+/* Scroll */
+.testimonial-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.scroll-t2b {
+  animation: scrollTopToBottom 60s linear infinite;
+}
+
+.scroll-b2t {
+  animation: scrollBottomToTop 60s linear infinite;
+}
+
+.testimonial-container:hover .testimonial-scroll {
+  animation-play-state: paused;
+}
+
+/* Animations */
+@keyframes scrollTopToBottom {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollBottomToTop {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* Card */
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid rgba(27, 155, 142, 0.15);
+  box-shadow: 0 8px 25px var(--card-shadow);
+  transition: 0.4s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px var(--card-hover);
+}
+
+/* Header */
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.testimonial-text {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .testimonial-container {
+    height: 30rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-heading {
+    font-size: 28px;
+  }
+}
+@media (max-width: 576px) {
+  .testimonial-heading {
+    font-size: 20px;
+  }
+  .testimonial-sub {
+    font-size: 14px;
+}
+}
