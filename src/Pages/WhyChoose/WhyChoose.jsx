@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   FaChalkboardTeacher,
   FaBookOpen,
   FaBriefcase,
   FaLaptopHouse,
   FaProjectDiagram,
-  FaBuilding 
+  FaBuilding
 } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -32,17 +32,16 @@ const features = [
     title: "Flexible Learning Modes",
     desc: "Choose classroom, online, or hybrid learning modes based on your comfort."
   },
-   {
+  {
     icon: <FaProjectDiagram />,
     title: "Real-Time Projects",
     desc: "Hands-on live projects to build strong practical knowledge."
   },
   {
-  icon: <FaBuilding />,
-  title: "Internship Opportunities",
-  desc: "Gain real-world exposure through internship programs with partner companies."
-},
- 
+    icon: <FaBuilding />,
+    title: "Internship Opportunities",
+    desc: "Gain real-world exposure through internship programs with partner companies."
+  }
 ];
 
 function Counter({ end, label }) {
@@ -56,7 +55,7 @@ function Counter({ end, label }) {
         if (entry.isIntersecting) {
           startCounter();
         } else {
-          setCount(0); // Reset when leaving view
+          setCount(0);
           hasAnimated.current = false;
         }
       },
@@ -72,7 +71,6 @@ function Counter({ end, label }) {
 
   const startCounter = () => {
     if (hasAnimated.current) return;
-
     hasAnimated.current = true;
 
     let start = 0;
@@ -81,19 +79,17 @@ function Counter({ end, label }) {
 
     const timer = setInterval(() => {
       start += increment;
-
       if (start >= end) {
         start = end;
         clearInterval(timer);
       }
-
       setCount(Math.floor(start));
     }, 16);
   };
 
   return (
     <div className="col-md-3 text-center counter-box" ref={counterRef}>
-      <h2 className="fw-bold ">{count}+</h2>
+      <h2 className="fw-bold">{count}+</h2>
       <p>{label}</p>
     </div>
   );
@@ -110,26 +106,26 @@ function WhyChoose() {
   return (
     <section className="why-section" id="whychoose">
       {/* Background Squares */}
-     <div className="squares">
-  {[...Array(100)].map((_, i) => {
-    const randomX = Math.random() * 100;
-    const randomY = Math.random() * 100;
-    const randomDelay = Math.random() * 20;
-    const randomDuration = 15 + Math.random() * 20;
+      <div className="squares">
+        {[...Array(100)].map((_, i) => {
+          const randomX = Math.random() * 100;
+          const randomY = Math.random() * 100;
+          const randomDelay = Math.random() * 20;
+          const randomDuration = 15 + Math.random() * 20;
 
-    return (
-      <span
-        key={i}
-        style={{
-          left: `${randomX}%`,
-          top: `${randomY}%`,
-          animationDelay: `-${randomDelay}s`,
-          animationDuration: `${randomDuration}s`
-        }}
-      />
-    );
-  })}
-</div>
+          return (
+            <span
+              key={i}
+              style={{
+                left: `${randomX}%`,
+                top: `${randomY}%`,
+                animationDelay: `-${randomDelay}s`,
+                animationDuration: `${randomDuration}s`
+              }}
+            />
+          );
+        })}
+      </div>
 
       <div className="container position-relative">
         <div className="text-center mb-5" data-aos="fade-up">
